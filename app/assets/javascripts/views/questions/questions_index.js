@@ -11,8 +11,8 @@ HeapOverflow.Views.QuestionsIndex = Backbone.View.extend({
 
 		this.collection.each(function(question) {
 			var view = new HeapOverflow.Views.QuestionsIndexItem({model: question})
-			this.$('ul.questions-index').append(view.render().$el)
-		}.bind(this));
+			this.$('ul.questions').append(view.render().$el)
+		});
 		return this;
 	}
 })
