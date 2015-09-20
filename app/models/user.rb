@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many(
-    :links,
-    class_name: "Link",
+    :questions,
+    class_name: :Question,
     foreign_key: :user_id,
     primary_key: :id
   )

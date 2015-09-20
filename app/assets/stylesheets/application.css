@@ -17,12 +17,28 @@
 @import 'reset.css';
 
 #header {
-	height: 50px;
-	background: #F0F0F0;
-	border: 1px solid #CCC;
+	height: 40px;
+	background: black;
 	width: 100%;
 	margin: 0px auto;
-	position: fixed;
+	/*position: fixed;*/
+}
+
+#second-header {
+	height: 90px;
+}
+
+#second-header > ul {
+	height: 100%;
+	/*background-color: blue;*/
+}
+
+#second-header > ul > li {
+	display: inline;
+}
+
+#second-header > ul > li.link-item {
+	float: right;
 }
 
 #container {
