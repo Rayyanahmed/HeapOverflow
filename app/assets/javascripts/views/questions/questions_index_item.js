@@ -1,7 +1,6 @@
 HeapOverflow.Views.QuestionsIndexItem = Backbone.View.extend({
 	template: JST['questions/index_item'],
-	
-	tagName: "li",
+
 
 	initialize: function() {
 		this.listenTo(this.model, 'sync', this.render)

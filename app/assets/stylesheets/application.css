@@ -48,3 +48,28 @@
 h1 {
 	font-size: 50px;
 }
+
+div.questions-index {
+	width: 100%;
+	overflow: auto;
+}
+
+div.questions-container {
+	width: 55%;
+	margin-left: 180px;
+	background-color: blue;
+	float: left;
+}
+
+div.tags-container {
+	background-color: green;
+	float: right;
+	margin-right: 20px;
+	width: 25%;
+	height: 400px;
+}
+
+li.question-item-container {
+	width: 100%;
+	border: 1px solid black;
+}
