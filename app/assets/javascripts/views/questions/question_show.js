@@ -17,7 +17,11 @@ HeapOverflow.Views.QuestionShow = Backbone.View.extend({
 				model: answer 
 			});
 			this.$("ul.question-show-answers").append(answerView.render().$el);
+
 		})
+
+		var answerForm = new HeapOverflow.Views.AnswerForm({collection: this.model.answers()})
+		this.$("div.answer-form").html(answerForm.render().$el)
 		return this;
 	}
 })
