@@ -12,12 +12,13 @@ class Api::QuestionsController < Api::ApiController
 
 	def index
 		@questions = Question.all 
-		render json: @questions 
+		render :index
 	end
 
 	def show
 		@question = Question.find(params[:id])
-		render json: @question 
+		@answers = @question.answers 
+		render :show
 	end
 
 	def destroy

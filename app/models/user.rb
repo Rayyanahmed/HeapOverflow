@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :answers,
+    class_name: :Answer,
+    foreign_key: :user_id, 
+    primary_key: :id 
+    )
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)
