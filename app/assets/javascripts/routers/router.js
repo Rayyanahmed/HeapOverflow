@@ -7,15 +7,23 @@ HeapOverflow.Routers.Router = Backbone.Router.extend({
 
 	initialize: function(options) {
 		this.$rootEl = options.$rootEl
+		this.questions = new HeapOverflow.Collections.Questions();
 	},
 
 	questionsIndex: function () {
-		var questions = new HeapOverflow.Collections.Questions();
-		questions.fetch()
+		this.questions.fetch()
 		var indexView = new HeapOverflow.Views.QuestionsIndex({
-			collection: questions 
+			collection: this.questions 
 		});
 		this._swapView(indexView)
+	},
+
+	questionShow: function(id) {
+		var question = this.questions.getOrFetch(id);
+		var view = new HeapOverflow.Views.QuestionShow({
+			model: question 
+		});
+		this._swapView(view);
 	},
 
 	_swapView: function(view) {

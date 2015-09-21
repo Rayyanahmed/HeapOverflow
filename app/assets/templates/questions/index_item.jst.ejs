@@ -1,3 +1,14 @@
 <li class="question-item-container">
-	<%= question.escape('title') %>
+	<ul class="question-stats">
+		<li class="votes">Votes</li>
+		<li class="answers">Answers</li>
+		<li class="views">Views</li>
+	</ul>
+	<div class="question-title">
+		<%= question.escape('title') %>
+	</div>
+	<ul class="author-info">
+		<li class="author-username">Username</li>
+		<li class="time-posted">1 minute ago</li>
+	</ul>
 </li>
