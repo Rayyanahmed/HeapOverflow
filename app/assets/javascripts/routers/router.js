@@ -18,6 +18,13 @@ HeapOverflow.Routers.Router = Backbone.Router.extend({
 		this._swapView(indexView)
 	},
 
+	questionNew: function() {
+		var view = new HeapOverflow.Views.QuestionForm({
+			collection: this.questions
+		})
+		this._swapView(view)
+	},
+
 	questionShow: function(id) {
 		var question = this.questions.getOrFetch(id);
 		var view = new HeapOverflow.Views.QuestionShow({
