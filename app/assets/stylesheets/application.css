@@ -24,6 +24,14 @@
 	/*position: fixed;*/
 }
 
+.selected {
+	background-color: orange;
+}
+
+li.link-item:hover {
+	background-color: orange;
+}
+
 #second-header {
 	height: 100px;
 }

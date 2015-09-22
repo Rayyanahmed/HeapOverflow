@@ -1,7 +1,7 @@
 class Api::AnswersController < Api::ApiController
 
 	def create
-		@answer = current_question.answers.new(answer_params)
+		@answer = Answer.new(answer_params)
 		@answer.user_id = current_user.id 
 
 		if @answer.save 
@@ -11,12 +11,10 @@ class Api::AnswersController < Api::ApiController
 		end
 	end
 
-	def index
-		@answers = Answer.all
-		render json: @answers
-	end
-
 	def destroy
+		@answer = Answer.find(params[:id])
+		@answer.destroy
+		render json: @answer 
 	end
 
 	private

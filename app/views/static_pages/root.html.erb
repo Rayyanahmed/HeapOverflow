@@ -17,4 +17,11 @@
 	$(document).ready(function() {
 		HeapOverflow.initialize()
 	})
+
+	$(function() {
+		$(".link-item").click(function() {
+			$(".link-item").removeClass("selected")
+			$(this).addClass("selected")
+		})
+	})
 </script>

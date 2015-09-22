@@ -5,8 +5,12 @@ HeapOverflow.Views.AnswerForm = Backbone.View.extend({
 		"click #answer-form": "submit"
 	},
 
+	initialize: function(options) {
+		this.question = options.question
+	},
+
 	render: function() {
-		var content = this.template();
+		var content = this.template({question: this.question});
 		this.$el.html(content);
 		return this;
 	},

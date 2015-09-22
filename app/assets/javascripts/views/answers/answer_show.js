@@ -2,7 +2,7 @@ HeapOverflow.Views.AnswerShow = Backbone.View.extend({
 	template: JST['answers/show'],
 
 	events: {
-		"click button.destroy": "destroy"
+		"click button.destroy-answer": "destroy"
 	},
 
 	initialize: function() {

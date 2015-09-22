@@ -1,5 +1,6 @@
 <form>
 	<label for="answer_content">Content</label>
+	<input type="hidden" name="answer[question_id]" value="<%= question.escape('id') %>">
 	<input type="text" name="answer[content]" id="answer_content"><br>
 	<input type="submit" class="answer-form">
 </form>

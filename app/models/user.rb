@@ -8,21 +8,24 @@ class User < ActiveRecord::Base
     :questions,
     class_name: :Question,
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :answers,
     class_name: :Answer,
     foreign_key: :user_id, 
-    primary_key: :id 
+    primary_key: :id,
+    dependent: :destroy
     )
 
   has_many(
     :comments,
     class_name: :Comment,
     foreign_key: :user_id,
-    primary_key: :id 
+    primary_key: :id,
+    dependent: :destroy
     )
 
   after_initialize :ensure_session_token
