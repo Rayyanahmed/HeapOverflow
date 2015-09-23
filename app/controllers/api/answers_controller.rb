@@ -14,7 +14,12 @@ class Api::AnswersController < Api::ApiController
 	def destroy
 		@answer = Answer.find(params[:id])
 		@answer.destroy
-		render json: @answer 
+		render json: {}
+	end
+
+	def show
+		@answer = Answer.find(params[:id])
+		render json: @answer
 	end
 
 	private
@@ -29,6 +34,6 @@ class Api::AnswersController < Api::ApiController
 	end
 
 	def answer_params
-		params.require(:answer).permit(:content)
+		params.require(:answer).permit(:content, :question_id)
 	end
 end

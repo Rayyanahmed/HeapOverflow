@@ -19,6 +19,7 @@ HeapOverflow.Routers.Router = Backbone.Router.extend({
 	},
 
 	questionNew: function() {
+		// this.questions.fetch()
 		var view = new HeapOverflow.Views.QuestionForm({
 			collection: this.questions
 		})

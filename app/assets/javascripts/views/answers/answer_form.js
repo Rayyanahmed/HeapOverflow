@@ -2,27 +2,24 @@ HeapOverflow.Views.AnswerForm = Backbone.View.extend({
 	template: JST['answers/form'],
 
 	events: {
-		"click #answer-form": "submit"
-	},
-
-	initialize: function(options) {
-		this.question = options.question
+		"submit form": "submit"
 	},
 
 	render: function() {
-		var content = this.template({question: this.question});
+		var content = this.template({question: this.model});
 		this.$el.html(content);
 		return this;
 	},
 
 	submit: function (event) {
+		var view = this;
 		event.preventDefault();
-		var newAnswer = new HeapOverflow.Models.Answer();
-		newAnswer.set("content", $("#answer_content").val())
-		newAnswer.save({}, {
-			success: function () {
-				this.collection.add(newAnswer)
-				Backbone.history.navigate("", {trigger: true})
+		
+		var params = $(event.currentTarget).serializeJSON();
+		var answer = new HeapOverflow.Models.Answer(params["answer"]);
+		answer.save({}, {
+			success: function() {
+				view.model.answers().add(answer);
 			}
 		})
 	}

@@ -3,9 +3,8 @@ HeapOverflow.Views.QuestionShow = Backbone.View.extend({
 	template: JST['questions/show'],
 
 	initialize: function() {
-		console.log("how many times will this view get rendered?")
 		this.listenTo(this.model, 'sync', this.render);
-		this.listenTo(this.model.answers(), "sync", this.render);
+		this.listenTo(this.model.answers(), "sync add remove", this.render);
 	},
 
 	render: function() {
@@ -20,7 +19,7 @@ HeapOverflow.Views.QuestionShow = Backbone.View.extend({
 
 		})
 
-		var answerForm = new HeapOverflow.Views.AnswerForm({question: this.model, collection: this.model.answers()})
+		var answerForm = new HeapOverflow.Views.AnswerForm({model: this.model})
 		this.$("div.answer-form").html(answerForm.render().$el)
 		return this;
 	}

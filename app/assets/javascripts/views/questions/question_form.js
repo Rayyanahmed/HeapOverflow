@@ -13,12 +13,11 @@ HeapOverflow.Views.QuestionForm = Backbone.View.extend({
 
 	submit: function (event) {
 		event.preventDefault();
-		var newQuestion = new HeapOverflow.Models.Question();
-		newQuestion.set("title", $("#question_title").val())
-		newQuestion.set("content", $("#question_content").val())
+		
+		var params = $(event.currentTarget).serializeJSON()["question"]
+		var newQuestion = new HeapOverflow.Models.Question(params)
 		newQuestion.save({}, {
-			success: function () {
-				this.collection.add(newQuestion)
+			success: function() {
 				Backbone.history.navigate("", {trigger: true})
 			}
 		})

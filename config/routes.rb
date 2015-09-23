@@ -8,7 +8,7 @@ Rails.application.routes.draw do
  namespace :api, defaults: { format: :json } do
  	resources :questions, except: :new
  	# resources :users, only: [:index, :show]
- 	resources :answers, only: [:destroy, :new, :show]
+ 	resources :answers, only: [:destroy, :new, :show, :create]
  	resources :comments, only: [:destroy, :new, :show]
  end
 end
