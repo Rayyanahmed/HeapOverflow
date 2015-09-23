@@ -9,6 +9,6 @@ Rails.application.routes.draw do
  	resources :questions, except: :new
  	# resources :users, only: [:index, :show]
  	resources :answers, only: [:destroy, :new, :show, :create]
- 	resources :comments, only: [:destroy, :new, :show]
+ 	resources :comments, only: [:destroy, :new, :show, :create]
  end
 end

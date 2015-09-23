@@ -22,6 +22,11 @@ HeapOverflow.Views.AnswerShow = Backbone.View.extend({
 			});
 			this.$("ul.answer-comments").append(commentView.render().$el)
 		})
+
+		var commentForm = new HeapOverflow.Views.CommentForm({model: this.model})
+		this.$("div.comment-form").html(commentForm.render().$el)
+
+
 		return this;
 	},
 
