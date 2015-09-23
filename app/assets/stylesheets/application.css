@@ -15,14 +15,8 @@
  */
 
 @import 'reset.css';
+@import 'headers.css';
 
-#header {
-	height: 40px;
-	background: black;
-	width: 100%;
-	margin: 0px auto;
-	/*position: fixed;*/
-}
 
 div.all-questions {
 	font-size: 18px;
@@ -32,56 +26,6 @@ div.all-questions {
 	margin-left: 20px;
 }
 
-/* tabs */
-
-.selected {
-	background-color: #fe7a15;
-	color: white;
-}
-
-li.link-item {
-	padding: 4px 10px 5px;
-	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.3em;
-	background-color: #9ea3a9;
-	margin-right: 8px;
-	color: white;
-	cursor: pointer;
-}
-
-li.link-item:hover {
-	background-color: #fe7a15;
-	color: white;
-}
-
-li.selected {
-	background-color: #fe7a15;
-	color: white;
-}
-
-ul.second-header-items {
-	margin-right: 160px;
-
-}
-
-/* Second header */
-#second-header {
-	height: 100px;
-}
-
-#second-header > ul {
-	height: 100%;
-	/*background-color: blue;*/
-}
-
-#second-header > ul > li {
-	display: inline;
-}
-
-#second-header > ul > li.link-item {
-	float: right;
-}
 
 #container {
 	height: auto;
