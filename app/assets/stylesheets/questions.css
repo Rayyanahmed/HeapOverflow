@@ -18,6 +18,11 @@ ul.question-tags > li {
 	padding: 3px;
 }
 
+div.tag-item-container {
+	display: inline;
+	position: relative;
+}
+
 ul.question-tags {
 	display: inline;
 }

@@ -31,13 +31,44 @@ h1 {
 	font-size: 50px;
 }
 
+div.header-search {
+	float: right;
+	margin-top: 10px;
+	margin-right: 170px;
+}
+
+div.header-search > input {
+	width: 220px;
+}
+
 
 div.tags-container {
-	background-color: #fff8dc;
+	/*background-color: #fff8dc;*/
 	float: right;
 	margin-right: 20px;
 	width: 25%;
 	height: 400px;
+}
+
+div.questions-stats-header {
+	font-size: 26px;
+	margin-top: 0px;
+	margin-bottom: 12px;
+}
+
+span.questions-stats-header-text {
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 1.3em;
+	color: #222;
+	display: block;
+}
+
+div.hot-questions {
+	background-color: #fff8dc;
+	height: 300px;
+	width: 65%;
+	
 }
 
 
@@ -95,4 +126,6 @@ span.view-stats-text {
 	font-size: 13px;
 }
 
-/* Question title */
+div.tag-description {
+	
+}
