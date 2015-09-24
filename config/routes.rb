@@ -9,7 +9,7 @@ Rails.application.routes.draw do
  	resources :questions, except: :new
  	# resources :users, only: [:index, :show]
  	resources :answers, only: [:destroy, :new, :show, :create]
- 	resources :comments, only: [:destroy, :new, :show, :create]
+ 	resources :comments, only: [:destroy, :new, :show, :create, :index]
  	resources :tags, only: [:show, :index]
  end
 end

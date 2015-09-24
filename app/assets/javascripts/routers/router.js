@@ -8,12 +8,13 @@ HeapOverflow.Routers.Router = Backbone.Router.extend({
 	initialize: function(options) {
 		this.$rootEl = options.$rootEl
 		this.questions = new HeapOverflow.Collections.Questions();
+		this.tags = new HeapOverflow.Collections.Tags();
 	},
 
 	questionsIndex: function () {
 		this.questions.fetch()
 		var indexView = new HeapOverflow.Views.QuestionsIndex({
-			collection: this.questions 
+			collection: this.questions,
 		});
 		this._swapView(indexView)
 	},

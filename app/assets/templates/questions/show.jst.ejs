@@ -1,7 +1,22 @@
-<%= question.escape('title') %><br>
-<%= question.escape('content') %><br>
+<div class="question-show-container">	
+	
+	<div class="question-show-title">	
+		<%= question.escape('title') %><br>
+	</div>
 
+	<div class="question-show-left">
 
-<ul class="question-show-answers"></ul>
+		<div class="question-show-content">
+			<%= question.escape('content') %><br>
+		</div>
 
-<div class="answer-form"></div>
+		<div class="question-show-answers-container">
+			<span class="answer-count"><%= question.answers().length %> Answers</span>
+			<ul class="question-show-answers"></ul>
+		</div>
+
+		<div class="answer-form"></div>
+
+	</div>
+
+</div>

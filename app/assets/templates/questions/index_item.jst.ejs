@@ -8,11 +8,14 @@
 		<%= question.escape('title') %>
 	</div>
 	<div class="question-content">
-		<%= question.escape('content') %>
+		<%= question.escape('content').slice(0, 200) %>
 	</div>
+
+	<ul class="question-tags"></ul>
+
 	<ul class="author-info">
-		<li class="tags">Tags</li>
-		<li class="author-username">Username</li>
-		<li class="time-posted">1 minute ago</li>
+
+		<li class="author-username"><%= question.escape('user') %></li>
+		<li class="time-posted">Asked: </li>
 	</ul>
 </li>
