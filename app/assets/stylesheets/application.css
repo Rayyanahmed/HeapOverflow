@@ -23,6 +23,21 @@ a {
 	text-decoration: none !important;
 }
 
+li.banner > img {
+	height: 90px;
+	width: 100px;
+	margin-top: -20px;
+	margin-left: 165px;
+	padding-bottom: 0;
+	display: inline;
+}
+
+
+
+li.banner {
+	display: inline;
+}
+
 #container {
 	height: auto;
 }

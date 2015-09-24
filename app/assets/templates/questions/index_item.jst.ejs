@@ -1,4 +1,5 @@
 <li class="question-item-container">
+	<a href="#/questions/<%= question.get('id') %>">
 	<ul class="question-stats">
 		<li class="votes-container"><div class="vote-stat"><%= question.get('vote_count') %></div><span class="vote-stats-text">votes</span></li>
 		<li class="answers-container"><div class="answer-stat"><%= question.get('answer_count') %></div><span class="answer-stats-text">answers</span></li>
@@ -18,6 +19,7 @@
 		<li class="time-posted">Asked: <abbr class="timeago" title="<%= question.escape('created_at') %>"></abbr></li>
 		<li class="author-username"><%= question.escape('user') %></li>
 	</ul>
+	</a>
 </li>
 
 <script type="text/javascript">
