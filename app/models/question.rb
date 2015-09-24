@@ -12,6 +12,7 @@ class Question < ActiveRecord::Base
 
 	has_many :taggings
 	has_many :tags, through: :taggings
+	has_many :votes, as: :votable
 
 	def tag_list=(tags_string)
 		tag_names = tags_string.split(",").collect{|s| s.strip.downcase}.uniq

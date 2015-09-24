@@ -1,8 +1,8 @@
 <li class="question-item-container">
 	<ul class="question-stats">
-		<li class="votes-container"><div class="vote-stat">0</div><span class="vote-stats-text">votes</span></li>
-		<li class="answers-container"><div class="answer-stat">0</div><span class="answer-stats-text">answers</span></li>
-		<li class="views-container"><div class="view-stat">0</div><span class="view-stats-text">views</span></li>
+		<li class="votes-container"><div class="vote-stat"><%= question.get('vote_count') %></div><span class="vote-stats-text">votes</span></li>
+		<li class="answers-container"><div class="answer-stat"><%= question.get('answer_count') %></div><span class="answer-stats-text">answers</span></li>
+		<li class="views-container"><div class="view-stat"><%= question.get('views') %></div><span class="view-stats-text">views</span></li>
 	</ul>
 	<div class="question-title">
 		<%= question.escape('title') %>
@@ -15,7 +15,13 @@
 
 	<ul class="author-info">
 
+		<li class="time-posted">Asked: <abbr class="timeago" title="<%= question.escape('created_at') %>"></abbr></li>
 		<li class="author-username"><%= question.escape('user') %></li>
-		<li class="time-posted">Asked: </li>
 	</ul>
 </li>
+
+<script type="text/javascript">
+   jQuery(document).ready(function() {
+     $("abbr.timeago").timeago();
+   });
+</script>

@@ -1,0 +1,1 @@
+json.extract!(@vote, :value, :votable_id, :votable_type)

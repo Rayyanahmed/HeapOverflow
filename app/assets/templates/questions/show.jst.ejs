@@ -1,5 +1,8 @@
 <div class="question-show-container">	
-	
+	<div class="voting">
+		Vote: <%= question.get('vote_count') %>
+	</div>
+
 	<div class="question-show-title">	
 		<%= question.escape('title') %><br>
 	</div>

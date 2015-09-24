@@ -129,3 +129,16 @@ span.view-stats-text {
 div.tag-description {
 	
 }
+
+li.time-posted {
+	color: #999;
+	font-size: 13px;
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+}
+
+li.author-username {
+	font-size: 12px;
+	color: #07c;
+	cursor: pointer;
+	font-family: 'Helvetica Nueu', Helvetica, sans-serif;
+}

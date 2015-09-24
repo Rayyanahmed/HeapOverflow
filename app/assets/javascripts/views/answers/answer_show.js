@@ -8,6 +8,7 @@ HeapOverflow.Views.AnswerShow = Backbone.View.extend({
 	initialize: function() {
 		this.listenTo(this.model, 'sync', this.render)
 		this.listenTo(this.model.comments(), 'sync', this.render)
+		this.listenTo(this.model, 'sync add change:vote_count', this.render);
 	},
 
 	render: function() {
@@ -15,6 +16,16 @@ HeapOverflow.Views.AnswerShow = Backbone.View.extend({
 			answer: this.model
 		});
 		this.$el.html(content);
+
+		var voteForm = new HeapOverflow.Views.VoteForm({
+			model: new HeapOverflow.Models.Vote({
+				answer_id: this.model.id 
+			}),
+			collection: this.model.votes(),
+			votableModel: this.model
+		});
+
+		this.$("div.voting").append(voteForm.render().$el);
 
 		this.model.comments().each(function (comment) {
 			var commentView = new HeapOverflow.Views.CommentShow({

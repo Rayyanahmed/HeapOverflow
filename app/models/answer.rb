@@ -10,4 +10,5 @@ class Answer < ActiveRecord::Base
 		primary_key: :id,
 		dependent: :destroy
 		)
+	has_many :votes, as: :votable
 end

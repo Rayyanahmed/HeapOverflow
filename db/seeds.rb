@@ -5,41 +5,105 @@ Comment.destroy_all
 Tag.destroy_all
 Tagging.destroy_all
 
-user = User.create(username: "guest", password: "password")
+u1 = User.create(username: "rayyan", password: "password")
+u2 = User.create(username: "saadh", password: "password")
+u3 = User.create(username: "jake", password: "password")
+u4 = User.create(username: "omar", password: "password")
+u5 = User.create(username: "parth", password: "password")
+u6 = User.create(username: "naveen", password: "password")
+u7 = User.create(username: "abhishek", password: "password")
+
+q1 = Question.create(user_id: u1.id, title: "mysql select - if no matches for given option, match a different option", 
+	content: "
+
+	I am trying to find users in a table by their ID number. A few users don't have an ID number, so for them I want to find by birthdate. So I want a select statement that does this: \n \n
+
+	Pseudo-code: \n \n
+
+	SELECT user FROM users WHERE id = idnumber \n
+      if that is not found, then \n
+                     WHERE dob = dob \n
+	I don't want to match date of birth if there is a match for id, because that will return too many results. I can do this in two separate selects, but I would like to avoid that if possible. \n \n
+
+	I am using PHP with PDO
+
+	"
+	)
+q1.tag_list=("php, mysql")
+a1 = Answer.create(user_id: u2.id, question_id: q1.id, content: "
+	SELECT user FROM users \n
+	WHERE id = :idnumber \n
+	OR (NOT EXISTS (SELECT user FROM users WHERE id = :idnumber) \n
+    AND dob = :dob) 
+	")
+c1 = Comment.create(user_id: u1.id, answer_id: a1.id, body: "Hey, thanks for this answer man. Looks nice. Haven't used EXISTS in this case. :)")
+
+c2 = Comment.create(user_id: u2.id, answer_id: a1.id, body: "Ah, this looks nice! x) ")
+
+a2 = Answer.create(user_id: u3.id, question_id: q1.id, 
+	content: "
+	You can do this with OR and prioritization. Assuming you want only one row back: \n \n 
+
+SELECT u.user \n 
+FROM users u \n 
+WHERE u.id = $idnumber or u.dob = $dob \n 
+ORDER BY (u.id = $idnumber) DESC \n 
+LIMIT 1; \n 
+Or, if you want multiple rows back, then a variation on Barmar's solution might optimize better: \n \n 
+
+SELECT u.user \n 
+FROM users u \n 
+WHERE u.id = :idnumber \n 
+UNION ALL \n 
+SELECT u.user \n 
+FROM users u \n 
+WHERE NOT EXISTS (SELECT 1 FROM users u2 WHERE u2.id = $idnumber) AND \n 
+      dob = $dob; \n 
+MySQL can be finicky about using indexes for OR conditions. This version will definitely use indexes on users(id) and users(dob). \n 
+	")
+
+q2 = Question.create(user_id: u4.id, title: "What can we do about incorrect tag wiki edits that get approved?", 
+	content: "
+	I was going back over my review history and found that I had voted contrary to the majority on this \n edit to the objective-c tag wiki excerpt. Now anybody who has developed iOS apps in any \n language other than Swift and Objective-C can tell you that the edit is factually wrong, but in \n addition, it's also irrelevant info to have in the tag excerpt. The edit was approved in the review \n queue, but then rolled back the next day by Josh Caswell. Good on him - if the story ended here, I \n wouldn't be posting to meta. \n \n
+
+I was curious to see if erroneous edits have been approved for the tag in the past, so I went \n through the edit history for the objective-c tag excerpt, and I learned that Josh Caswell has rolled \n back changes on four separate bad edits 1 2 3 4, the second of which did nothing except to \n introduce incorrect grammar and break references to other tags. \n \n
+
+Now if this is happening on this tag, I can only imagine it is happening on other tags as well. I feel \n like from now on if I reject a bad tag edit, I should bookmark it so I can roll it back on the off chance that it gets accepted.
+
+First of all, is this something that anyone else has noticed happening in other tags? (Or is the objective-c tag somehow a magnet for bad edits \n \n and this isn't a problem for other tag wikis?) If so, then how can we help alleviate this problem? I don't want us to all have to adopt a tag like Josh Caswell so that we can monitor it and revert bad edits.
+
+Perhaps we could separate the Suggested Edits review queue into Suggested Edits and \n Suggested Tag Edits, so that users don't review tag edits unless they specifically seek them out \n (and hopefully have more knowledge of the tag system)? And/or maybe we could restrict tag edit \n reviews to >10k rep? (Although with >10k there may not be enough volunteers to review tag edits). \n \n
+
+Does this look like a problem in need of a solution, or is it okay to just rely on >20k users to roll \n back bad tag edits when they happen? Looking forward to hearing what you think.
 
 
-q1 = Question.create!(title: "Suspected voting fraud by duplicate user profiles", content: "I just encountered a user who asked a question a few days ago and got a handful of answers. But today, suddenly they updated their question and removed the acceptance from the answer, which they'd accepted earlier.
+	")
 
-I visited their profile and found that most of their questions got down-votes from the community. Some time later I saw that suddenly all of their questions got up-votes and their reputation bumped up.
+q2.tag_list=("discussion, review, suggested-edits, tag-wiki, tag-excerpt")
+ 
 
-Does Stack Overflow try to identify such users/events? Because it looked like you can create another account and always up-vote all of your activity on Stack Overflow.", user_id: user.id)
-q1.tag_list=("discussion, serial-voting, voting-fraud, duplicate-accounts")
-a1 = q1.answers.create(content: "To answer your more general question, yes Stack Overflow and its moderators have the ability to sniff out users who create fake accounts to vote for themselves. In the most obvious cases of this, the site will automatically detect the fraudulent votes and invalidate them. For the more persistent ones, or folks who slip through the system, we have tools to detect their fraudulent voting. We deal with those people as they appear on our radar.
+q3 = Question.create(user_id: u4.id, title: "What exactly a pawn activity consists of?",
+	content: "
+There's a TV show on the History Channel called Pawn Stars. \n \n 
 
-In this specific case, the asker of the question was a clear voting sock puppet of another user. However, none of the answers on that question were by accounts associated with that user, so them unaccepting your answer didn't directly benefit themselves. I've removed this and another sock puppet I found, suspended the main account, and blocked them from creating new accounts at their current location.
+According to American Heritage Dictionary of the English Language the pawn's definition is: \n \n 
 
-Thanks for pointing this out. If it helps you feel any better, you would have lost the points from the accept vote anyway when the sock puppet was eventually found and deleted.", user_id: user.id)
-c1 = a1.comments.create(body: "Yes. The account is removed now. Thanks a lot. Can you provide some information on how to flag such users?", user_id: user.id)
-c2 = a1.comments.create(user_id: user.id, body: "@abhishekbafna - If you see suspicious voting behavior for an account, and you think it's worth us acting on, cast a custom flag on one of their posts and explain what it is you saw and why you think we should look into this account. You might want to check that the system or moderators haven't already acted on the voting, because we handle a lot of these before the community notices")
-c3 = a1.comments.create(user_id: user.id, body: "Thanks. I got you.")
+Something given as security for a loan; a pledge or guaranty. \n 
+My confusion is that no client on that show pawns their items, they simply sell them for good, so I \n wonder: since the pawn's dictionary definition can't be wrong are they doing another activity than \n the one written on their logo? \n \n
 
-q2 = Question.create!(user_id: user.id, title: "Replace voting arrows with stars",
-	content: "I am a new programmer and was recommended to the site by several teachers and my internship boss. They all said how great of a learning tool this was. But users keep down voting my questions saying they are too easy and other things along that line. Getting down voted and those comments are very discouraging for a young coder like me, so what is the point of them? Do you not want the community to grow?")
-q2.tag_list=("discussion, voting")
+Does pawn mean that admittedly both activities pawning and buying and selling are allowed in  \n such a store? If so why is it not written on the dictionary?
+	")
 
-a2 = q2.answers.create(user_id: user.id, content: "We don't downvote people. \n
+q3.tag_list=("word-usage, word-meaning")
 
-We downvote posts. Posts that are not clear. Posts that are off-topic. Posts that are not asking a question. Posts that are low quality. \n
+a3 = Answer.create(question_id: q3.id, user_id: u1.id, content: "
+	The short version is yes, people often go to a pawnshop intended to sell, rather than pawn, an \n item. This doesn't mean that the definition of 'pawn' is incomplete, though. To understand how \n this situation would arise, think about how pawnshops work: \n \n
 
-I can go on. \n
+When someone pawns an item, they are borrowing money using the item as security (exactly as \n the definition says). For a specified span of time, they can bring back the money (plus interest) \n and get the item back. However, frequently, people who pawn items are unable to come up with the \n money during that time, at which point the pawnbroker will offer the item for sale to recover the \n lent funds. \n \n
 
-The converse is also true - good, high quality, clear posts get upvotes. \n
+Pawn shops, as a result, become a place where a wide variety of items are available for purchase. \n Some of those items are more valuable than their owners (or even the pawnbroker) will realize, and \n so antiques dealers and other experts in obscure goods visit them, hoping to spot a valuable item \n available for cheap. \n \n
 
-Votes are not a reflection on the person - but on the post.")
+As a result of this, the pawnbroker will often be willing to straight-up purchase items, in hopes of \n making a profit selling them to those traveling dealers, and so people will come to them not only \n when they need a loan, but when they just want to sell something. \n \n
 
-a3 = q2.create(user_id: user.id, content: "The most probable reasons for downvote are : \n \n
-
-You have just asked a question without doing any research on what you are asking. \n \n
-Your question proves that you have no idea (lack minimal understanding) about what you are asking (happens loads of times with how can I do this kind of questions). \n \n
-Your questions contain incomplete information or are primarily opinion based or are too broad. \n \n
-Note : You usually get answers even for duplicated questions. For example - this question has been asked and answered (also, marked as duplicate) several hundred times. So, we don't close questions and downvote blindly.. We encourage people to ask more questions. But flawed ones should and will be removed to maintain quality on the site.")
+Many businesses are generally understood to offer services that are not, strictly speaking, part of \n their formal definition. For instance, gas stations almost always have a machine for re-inflating \n tires. Most pharmacies sell a variety of general household goods in addition to filling medical \n prescriptions. Banks offer safe-deposit boxes. When enough people who want one service would \n also want another, and it is convenient to provide it, businesses adapt.
+	")

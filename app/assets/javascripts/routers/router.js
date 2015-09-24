@@ -2,7 +2,8 @@ HeapOverflow.Routers.Router = Backbone.Router.extend({
 	routes: {
 		'': 'questionsIndex',
 		'questions/new': 'questionNew',
-		'questions/:id': 'questionShow'
+		'questions/unanswered': 'unanswered',
+		'questions/:id': 'questionShow',
 	},
 
 	initialize: function(options) {
@@ -17,6 +18,14 @@ HeapOverflow.Routers.Router = Backbone.Router.extend({
 			collection: this.questions,
 		});
 		this._swapView(indexView)
+	},
+
+	unanswered: function () {
+		this.questions.fetch();
+		var view = new HeapOverflow.Views.Unanswered({
+			collection: this.questions 
+		});
+		this._swapView(view)
 	},
 
 	questionNew: function() {

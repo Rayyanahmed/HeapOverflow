@@ -10,6 +10,16 @@ class Api::QuestionsController < Api::ApiController
 		end
 	end
 
+	def update
+		update_view_count
+		@question = current_user.questions.find(params[:id])
+		if @question.update(question_params)
+			render json: @question 
+		else 
+			render json: @question.errors.full_messages, status: :unprocessable_entity
+		end
+	end
+
 	def index
 		@questions = Question.all 
 		render :index
@@ -33,5 +43,12 @@ class Api::QuestionsController < Api::ApiController
 
 	def question_params
 		params.require(:question).permit(:title, :content, :tag_list)
+	end
+
+	def update_view_count
+		if params[:views]
+			question = Question.find(params[:id])
+			question.update({views: params[:views]})
+		end
 	end
 end
