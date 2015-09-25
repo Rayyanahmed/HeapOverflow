@@ -22,7 +22,7 @@ Rails.application.configure do
 
   config.log_level = :debug
 
- 
+  config.assets.compress = true
  
   config.i18n.fallbacks = true
 
