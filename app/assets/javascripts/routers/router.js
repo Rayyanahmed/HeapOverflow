@@ -4,12 +4,26 @@ HeapOverflow.Routers.Router = Backbone.Router.extend({
 		'questions/new': 'questionNew',
 		'questions/unanswered': 'unanswered',
 		'questions/:id': 'questionShow',
+		'tags': 'tagsIndex',
+		'tags/:id': 'tagShow'
 	},
 
 	initialize: function(options) {
 		this.$rootEl = options.$rootEl
 		this.questions = new HeapOverflow.Collections.Questions();
 		this.tags = new HeapOverflow.Collections.Tags();
+	},
+
+	tagsIndex: function() {
+		
+	},
+
+	tagShow: function(id) {
+		var tag = this.tags.getOrFetch(id);
+		var view = new HeapOverflow.Views.TagShow({
+			model: tag
+		});
+		this._swapView(view)
 	},
 
 	questionsIndex: function () {

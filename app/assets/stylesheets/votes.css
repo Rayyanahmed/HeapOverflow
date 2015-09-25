@@ -1,0 +1,11 @@
+button.upvote {
+	position: relative;
+}
+
+div.vote-count {
+	position: relative;
+}
+
+button.downvote {
+	position: relative;
+}

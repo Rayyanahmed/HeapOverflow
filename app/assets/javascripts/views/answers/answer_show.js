@@ -25,7 +25,7 @@ HeapOverflow.Views.AnswerShow = Backbone.View.extend({
 			votableModel: this.model
 		});
 
-		this.$("div.voting").append(voteForm.render().$el);
+		this.$("div.answer-vote").append(voteForm.render().$el);
 
 		this.model.comments().each(function (comment) {
 			var commentView = new HeapOverflow.Views.CommentShow({

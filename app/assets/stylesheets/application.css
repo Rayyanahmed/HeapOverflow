@@ -32,7 +32,9 @@ li.banner > img {
 	display: inline;
 }
 
-
+ul.sort-questions {
+	/*float: right;*/
+}
 
 li.banner {
 	display: inline;
@@ -50,6 +52,22 @@ div.header-search {
 	float: right;
 	margin-top: 10px;
 	margin-right: 170px;
+}
+
+div.voting {
+	float: left;
+}
+
+div.answer-vote {
+	float: left;
+}
+
+li.answer-show-container {
+	margin-left: 100px;
+}
+
+div.question-show-content {
+	margin-left: 100px;
 }
 
 div.header-search > input {

@@ -107,3 +107,37 @@ As a result of this, the pawnbroker will often be willing to straight-up purchas
 
 Many businesses are generally understood to offer services that are not, strictly speaking, part of \n their formal definition. For instance, gas stations almost always have a machine for re-inflating \n tires. Most pharmacies sell a variety of general household goods in addition to filling medical \n prescriptions. Banks offer safe-deposit boxes. When enough people who want one service would \n also want another, and it is convenient to provide it, businesses adapt.
 	")
+
+q4 = Question.create(user_id: u5.id, title: "How do JavaScript closures work?", content: "
+
+	Like the old Albert Einstein said: \n \n 
+
+If you can't explain it to a six-year-old, you really don't understand it yourself. \n 
+Well, I tried to explain JavaScript closures to a 27-year-old friend and completely failed. \n 
+
+How would you explain it to someone with a knowledge of the concepts which make up closures \n (for example, functions, variables and the like), but does not understand closures themselves? \n
+
+I have seen the Scheme example given on Stack Overflow, and it did not help.
+	")
+
+q4.tag_list=("javascript, closures")
+
+a4 = Answer.create(user_id: u1.id, question_id: q4.id, 
+	content: "
+
+	Closures are hard to explain because they are used to make some behaviour work that everybody \n intuitively expects to work anyway. I find the best way to explain them (and the way that I learned \n what they do) is to imagine the situation without them:
+
+var bind = function(x) { \n 
+    return function(y) { return x + y; }; \n \n 
+}
+
+var plus5 = bind(5); \n 
+alert(plus5(3)); \n 
+What would happen here if JavaScript didn't know closures? Just replace the call in the last line \n by its method body (which is basically what function calls do) and you get: \n \n
+
+alert(x + 3); \n
+Now, where's the definition of x? We didn't define it in the current scope. The only solution is to \n let plus5 carry its scope (or rather, its parent's scope) around. This way, x is well-defined and it \n is bound to the value 5.
+
+	")
+c3 = Comment.create(user_id: u1.id, answer_id: a4.id, body: "What is being described here is currying. Its great, its functional but its entirely opaque to the target 6 year old.")
+c4 = Comment.create(user_id: u2.id, answer_id: a4.id, body: "It's true that I've used currying as an example but that's not the point here and entirely irrelevant to the explanation.")

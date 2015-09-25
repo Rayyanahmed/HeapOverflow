@@ -1,7 +1,7 @@
+<div class="answer-vote">
+	Vote: <%= answer.get('vote_count') %>
+</div>
 <li class="answer-show-container">
-	<div class="voting">
-		Vote: <%= answer.get('vote_count') %>
-	</div>
 	<%= answer.escape('content') %>
 	<button class="destroy-answer">Destroy</button>
 	<ul class="answer-comments"></ul>

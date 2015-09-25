@@ -6,6 +6,22 @@ div.all-questions {
 	margin-left: 20px;
 }
 
+ul.sort-questions > li {
+	float: right;
+	margin-right: 25px;
+	margin-top: -17px;
+	border: 1px solid transparent;
+	border-bottom-color: #e0e0e0;
+	color: #777;
+	cursor: pointer;
+	font-size: 16px;
+
+}
+
+ul.sort-questions > li:hover {
+	border-top: 2px solid orange;
+}
+
 ul.question-tags > li {
 	display: inline;
 	font-size: 12px;
