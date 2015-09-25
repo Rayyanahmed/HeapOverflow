@@ -1,0 +1,417 @@
+#header {
+	height: 40px;
+	background: black;
+	width: 100%;
+	margin: 0px auto;
+	/*position: fixed;*/
+}
+
+/* Second header */
+#second-header {
+	height: 100px;
+}
+
+#second-header > ul {
+	height: 100%;
+	/*background-color: blue;*/
+}
+
+#second-header > ul > li {
+	display: inline;
+}
+
+#second-header > ul > li.link-item {
+	float: right;
+}
+
+/* second header items */
+
+.selected {
+	background-color: #fe7a15;
+	color: white;
+}
+
+li.link-item {
+	padding: 4px 10px 5px;
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.3em;
+	background-color: #9ea3a9;
+	margin-right: 8px;
+	color: white;
+	cursor: pointer;
+}
+
+li.link-item:hover {
+	background-color: #fe7a15;
+	color: white;
+}
+
+li.selected {
+	background-color: #fe7a15;
+	color: white;
+}
+
+ul.second-header-items {
+	margin-right: 160px;
+	padding-top: 25px;
+}
+div.all-questions {
+	font-size: 18px;
+	font-weight: 500;
+	color: #222;
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	margin-left: 20px;
+}
+
+ul.sort-questions > li {
+	float: right;
+	margin-right: 25px;
+	margin-top: -17px;
+	border: 1px solid transparent;
+	border-bottom-color: #e0e0e0;
+	color: #777;
+	cursor: pointer;
+	font-size: 16px;
+
+}
+
+ul.sort-questions > li:hover {
+	border-top: 2px solid orange;
+}
+
+ul.question-tags > li {
+	display: inline;
+	font-size: 12px;
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	color: #3e6d8e;
+	background: #e4edf4;
+	border: 1px solid #e4edf4;
+	cursor: pointer;
+	margin: 4px 4px 4px 0;
+	padding: 3px;
+}
+
+div.tag-item-container {
+	display: inline;
+	position: relative;
+}
+
+ul.question-tags {
+	display: inline;
+}
+
+ul.author-info {
+	float: right;
+}
+
+div.question-content {
+	margin-bottom: 10px;
+}
+
+div.question-title {
+	margin-bottom: 8px;
+}
+
+div.questions-index {
+	width: 100%;
+	overflow: auto;
+}
+
+div.questions-container {
+	width: 55%;
+	margin-left: 180px;
+	float: left;
+}
+
+li.question-item-container {
+	width: 100%;
+	height: 170px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+ul.question-stats {
+	float: left;
+	margin-right: 20px;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+ul.question-stats > li {
+	margin-bottom: 15px;
+}
+
+span.vote-stats-text, span.answer-stats-text, span.view-stats-text {
+	display: block;
+	text-align: center;
+}
+
+div.question-title {
+	padding-top: 15px;
+	color: #0c65a5;
+	line-height: 1.3em;
+	cursor: pointer;
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+
+div.question-show-title {
+	font-size: 24px;
+	line-height: 1.35;
+	font-weight: normal;
+	margin-bottom: .5em;
+	width: 75%;
+	border-bottom: 1px solid black;
+}
+
+div.question-show-container {
+	margin-left: 155px;
+	width: 100%;
+}
+
+div.question-show-left {
+	width: 60%;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+button.upvote {
+	position: relative;
+}
+
+div.vote-count {
+	position: relative;
+}
+
+button.downvote {
+	position: relative;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+@import 'reset.css';
+@import 'headers.css';
+@import 'questions.css';
+
+
+a {
+	text-decoration: none !important;
+}
+
+li.banner > img {
+	height: 90px;
+	width: 100px;
+	margin-top: -20px;
+	margin-left: 165px;
+	padding-bottom: 0;
+	display: inline;
+}
+
+ul.sort-questions {
+	/*float: right;*/
+}
+
+li.banner {
+	display: inline;
+}
+
+#container {
+	height: auto;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+div.header-search {
+	float: right;
+	margin-top: 10px;
+	margin-right: 170px;
+}
+
+div.voting {
+	float: left;
+}
+
+div.answer-vote {
+	float: left;
+}
+
+li.answer-show-container {
+	margin-left: 100px;
+}
+
+div.question-show-content {
+	margin-left: 100px;
+}
+
+div.header-search > input {
+	width: 220px;
+}
+
+
+div.tags-container {
+	/*background-color: #fff8dc;*/
+	float: right;
+	margin-right: 20px;
+	width: 25%;
+	height: 400px;
+}
+
+div.questions-stats-header {
+	font-size: 26px;
+	margin-top: 0px;
+	margin-bottom: 12px;
+}
+
+span.questions-stats-header-text {
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 1.3em;
+	color: #222;
+	display: block;
+}
+
+div.hot-questions {
+	background-color: #fff8dc;
+	height: 300px;
+	width: 65%;
+	
+}
+
+
+
+div.vote-stat, div.answer-stat, div.view-stat {
+	text-align: center;
+}
+
+div.vote-stat {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 1.3em;
+	color: #777;
+	font-size: 22px;
+}
+
+span.vote-stats-text {
+	font-size: 11px;
+	color: #777;
+	line-height: 1.3em;
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	margin-top: -3px;
+}
+
+
+li.answers-container {
+	background-color: #75845c;
+	padding: 5px;
+}
+
+div.answer-stat {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 1.3em;
+	font-size: 20px;
+	color: #e1e818;
+}
+
+span.answer-stats-text {
+	font-size: 11px;
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	line-height: 1.3em;
+	color: #e1e818;
+	margin-top: -3px;
+}
+
+div.view-stat {
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	color: #fe7a15;
+	font-size: 12px;
+	margin-bottom: 2px;
+}
+
+span.view-stats-text {
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+	color: #fe7a15;
+	font-size: 13px;
+}
+
+div.tag-description {
+	
+}
+
+li.time-posted {
+	color: #999;
+	font-size: 13px;
+	font-family: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
+}
+
+li.author-username {
+	font-size: 12px;
+	color: #07c;
+	cursor: pointer;
+	font-family: 'Helvetica Nueu', Helvetica, sans-serif;
+}
