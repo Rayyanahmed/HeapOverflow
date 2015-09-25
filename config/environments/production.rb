@@ -8,6 +8,8 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.serve_static_assets = true
+
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   config.assets.js_compressor = :uglifier
@@ -18,11 +20,11 @@ Rails.application.configure do
 
   config.assets.digest = true
 
-  config.assets.compress = true
+  # config.assets.compress = true
 
   config.log_level = :debug
 
-  config.assets.compress = true
+  # config.assets.compress = true
  
   config.i18n.fallbacks = true
 
