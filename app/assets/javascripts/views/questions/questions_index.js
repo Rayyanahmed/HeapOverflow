@@ -18,7 +18,8 @@ HeapOverflow.Views.QuestionsIndex = Backbone.View.extend({
 
 		'click li.most-answered': function(event) {
 			this.sortByAnswerCount(event)
-		}
+		},
+
 	},
 
 	sortByViews: function(event) {
